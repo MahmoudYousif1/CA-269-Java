@@ -1,0 +1,669 @@
+class Q1a {
+    public String title;
+    public int number;
+    public int marks;
+
+    Q1a(String title, int number, int marks) {
+        this.title = title;
+        this.number = number;
+        this.marks = marks;
+    }
+
+    public String toString() {
+        return number + " " + title + " (" + marks + " marks)";
+    }
+
+    public static void main(String args[]) {
+        Q1a x = new Q1a("The first question", 1, 100);
+        System.out.println(x);
+    }
+}
+
+class Q1b {
+    private String title;
+    public int number;
+    private int marks;
+
+    Q1b(String title, int number, int marks) {
+        setTitle(title);
+        setNumber(number);
+        setMarks(marks);
+    }
+
+    Q1b() {
+        setTitle("untitled");
+        setNumber(0);
+        setMarks(0);
+    }
+
+    // getters
+    public String getTitle() {
+        return this.title;
+    }
+
+    public int getNumber() {
+        return this.number;
+    }
+
+    public int getMarks() {
+        return this.marks;
+    }
+
+    // setters
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public void setMarks(int marks) {
+        if(marks < 0) {
+            this.marks = 0;
+        }
+        else {
+            this.marks = marks;
+        }
+    }
+
+    public String toString() {
+        return number + " " + title + " (" + marks + " marks)";
+    }
+
+    public static void main(String args[]) {
+        Q1b x = new Q1b("The second part", 2, -99);
+        System.out.println(x);
+    }
+}
+
+
+class Q1c {
+    private String title;
+    public int number;
+    private int marks;
+    private static int MQUESTION_COUNT = 0;
+
+    Q1c(String title, int number, int marks) {
+        setTitle(title);
+        setNumber(number);
+        setMarks(marks);
+        Q1c.MQUESTION_COUNT += 1;
+    }
+
+    Q1c() {
+        setTitle("untitled");
+        setNumber(0);
+        setMarks(0);
+        Q1c.MQUESTION_COUNT += 1;
+    }
+
+    Q1c(String title, int marks) {
+        setTitle(title);
+        setMarks(marks);
+        Q1c.MQUESTION_COUNT += 1;
+        setNumber(Q1c.MQUESTION_COUNT);
+    }
+
+    // getters
+    public String getTitle() {
+        return this.title;
+    }
+
+    public int getNumber() {
+        return this.number;
+    }
+
+    public int getMarks() {
+        return this.marks;
+    }
+
+    // setters
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public void setMarks(int marks) {
+        if(marks < 0) {
+            this.marks = 0;
+        }
+        else {
+            this.marks = marks;
+        }
+    }
+
+    public String toString() {
+        return number + " " + title + " (" + marks + " marks)";
+    }
+
+    public static void main(String args[]) {
+        Q1c x = new Q1c("The third part", -99);
+        System.out.println(x);
+
+        Q1c y = new Q1c("The third part, pt.2", 100);
+        System.out.println(y);
+    }
+}
+
+
+
+2a
+class Individual {
+    // fields
+    public String name;
+
+    // getter
+    public String getName() {
+        return this.name;
+    }
+
+    // setter
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // constructor
+    /**
+    * @param takes and sets the name of an individual.
+    */
+    Individual(String name) {
+        setName(name);
+    }
+
+    public String toString() {
+        return getName();
+    }
+}
+
+class Person extends Individual {
+    // fields
+    protected String nickname;
+
+    // getter
+    public String getNickname() {
+        return this.nickname;
+    }
+
+    // setter
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    // constructor
+    /**
+    * @param name, the name of the person
+    * @param nickname, the nickname of the person
+    */
+    Person(String name, String nickname) {
+        super(name);
+        setNickname(nickname);
+    }
+
+    public String toString() {
+        return getName() + " (" + getNickname() + ")";
+    }
+
+    public static void main(String args[]) {
+        Person a = new Person("Renso", "osner");
+        System.out.println(a);
+    }
+}
+
+
+2b
+interface FamilyMember extends PersonalDetails {
+    String getNickname();
+    void setNickname(String name);
+}
+
+interface PersonalDetails {
+    String getName();
+    int getAge();
+}
+
+class Individual {
+    // fields
+    public String name;
+
+    // getter
+    public String getName() {
+        return this.name;
+    }
+
+    // setter
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // constructor
+    /**
+    * @param takes and sets the name of an individual.
+    */
+    Individual(String name) {
+        setName(name);
+    }
+
+    public String toString() {
+        return getName();
+    }
+}
+
+class Person extends Individual implements FamilyMember {
+    // fields
+    protected String nickname;
+    public int age;
+
+    // getters
+    public String getNickname() {
+        return this.nickname;
+    }
+
+    public int getAge() {
+        return this.age;
+    }
+
+    // setter
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    // constructor
+    /**
+    * @param name, the name of the person
+    * @param nickname, the nickname of the person
+    */
+    Person(String name, String nickname) {
+        super(name);
+        setNickname(nickname);
+    }
+
+    public String toString() {
+        return getName() + " (" + getNickname() + ")";
+    }
+
+    public static void main(String args[]) {
+        Person a = new Person("Renso", "osner");
+        System.out.println(a);
+    }
+}
+
+2c
+class Person {
+    private String name;
+}
+class Employee extends Person {
+    private String empoyeeID;
+}
+interface VIP {
+    String VIPStatus();
+}
+
+class CompanyGathering {
+    public boolean admitPerson(Person person) {
+        if(person instanceof Employee || person instanceof VIP) {
+            return true;
+        }
+        return false;
+    }
+}
+
+
+
+Q3a
+
+import java.util.List;
+import java.util.ArrayList;
+
+class Student {
+    private int marks;
+    public int getMarks() { return this.marks; }
+    public void setMarks(int marks) { this.marks = marks; }
+}
+
+class Classroom {
+    private List<Student> classroom = new ArrayList<>();
+
+    // getter
+    public List<Student> getClassroom() {
+        return this.classroom;
+    }
+
+    // setter
+    public void setClassroom(List<Student> classroom) {
+        this.classroom = classroom;
+    }
+
+    Classroom() {
+        setClassroom(getClassroom());
+    }
+
+    /**
+    * method that adds a student to the private list.
+    *
+    * @param student, a student that will be added to the list.
+    */
+    public void addStudent(Student student) {
+        getClassroom().add(student);
+    }
+
+    /**
+    * a method that will return a list of student that have marks greater than that passed as an arg.
+    *
+    * @param a mark that will be used when deciding which students are added to the list.
+    * @return returns a list of students who's marks are greater than or equal to marks passed as an arg.
+    */
+    public List<Student> getGradedStudents(int marks) {
+        List<Student> gradedStudents = new ArrayList<>();
+        for(Student student: getClassroom()) {
+            if(student.getMarks() >= marks) {
+                gradedStudents.add(student);
+            }
+        }
+        return gradedStudents;
+    }
+
+    /**
+    * a method that returns the average marks of all students in the classroom.
+    *
+    * @return the average marks of all students in the classroom.
+    */
+    public int getAverageMarks() {
+        int averageMarks = 0;
+        for(Student student: getClassroom()) {
+            averageMarks += student.getMarks();
+        }
+        return averageMarks / getClassroom().size();
+    }
+
+    public static void main(String[] args) {
+        Student Renso = new Student();
+        Renso.setMarks(85);
+
+        Student Random1 = new Student();
+        Random1.setMarks(39);
+
+        Student Random2 = new Student();
+        Random2.setMarks(39);
+
+        Classroom classroom = new Classroom();
+        classroom.addStudent(Renso);
+        classroom.addStudent(Random1);
+        classroom.addStudent(Random2);
+        System.out.println(classroom.getGradedStudents(40));
+
+        System.out.println(classroom.getAverageMarks());
+    }
+}
+
+
+Q3b
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Queue;
+import java.util.LinkedList;
+import java.util.Collections;
+
+class Student implements Comparable<Student> {
+    private int marks;
+    public int getMarks() { return this.marks; }
+    public void setMarks(int marks) { this.marks = marks; }
+
+    // implemented method
+    /**
+    * a method which compares the marks of two students.
+    *
+    * @param another student, which we want to compare marks with.
+    * @return -1, 0, 1 based on whether a student's marks are less than,
+    *         equal to or greater than the other specified student.
+    */
+    public int compareTo(Student other) {
+        if(this.getMarks() < other.getMarks()) {
+            return -1;
+        } else if(this.getMarks() == other.getMarks()) {
+            return 0;
+        }
+        return 1;
+    }
+}
+
+class Classroom {
+    private List<Student> classroom = new ArrayList<>();
+
+    // getter
+    public List<Student> getClassroom() {
+        return this.classroom;
+    }
+
+    // setter
+    public void setClassroom(List<Student> classroom) {
+        this.classroom = classroom;
+    }
+
+    Classroom() {
+        setClassroom(getClassroom());
+    }
+
+    /**
+    * method that adds a student to the private list.
+    *
+    * @param student, a student that will be added to the list.
+    */
+    public void addStudent(Student student) {
+        getClassroom().add(student);
+    }
+
+    /**
+    * a method that will return a list of student that have marks greater than that passed as an arg.
+    *
+    * @param a mark that will be used when deciding which students are added to the list.
+    * @return returns a list of students who's marks are greater than or equal to marks passed as an arg.
+    */
+    public Queue<Student> getGraduatingStudents(int marks) {
+        List<Student> gradedStudents = new ArrayList<>();
+        for(Student student: getClassroom()) {
+            if(student.getMarks() >= marks) {
+                gradedStudents.add(student);
+            }
+        }
+
+        Collections.sort(gradedStudents);
+        Collections.reverse(gradedStudents);
+        Queue<Student> graduatingStudents = new LinkedList<>();
+
+        for(Student student: gradedStudents) {
+            graduatingStudents.add(student);
+        }
+        return graduatingStudents;
+    }
+
+    /**
+    * a method that returns the average marks of all students in the classroom.
+    *
+    * @return the average marks of all students in the classroom.
+    */
+    public int getAverageMarks() {
+        int averageMarks = 0;
+        for(Student student: getClassroom()) {
+            averageMarks += student.getMarks();
+        }
+        return averageMarks / getClassroom().size();
+    }
+
+    public static void main(String[] args) {
+        Student Renso = new Student();
+        Renso.setMarks(85);
+
+        Student Random1 = new Student();
+        Random1.setMarks(39);
+
+        Student Random2 = new Student();
+        Random2.setMarks(39);
+
+        Classroom classroom = new Classroom();
+        classroom.addStudent(Renso);
+        classroom.addStudent(Random1);
+        classroom.addStudent(Random2);
+
+        //System.out.println(classroom.getAverageMarks());
+
+        Queue<Student> graduating = classroom.getGraduatingStudents(30);
+        System.out.println(graduating.remove().getMarks());
+    }
+}
+
+
+Q3c
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Queue;
+import java.util.LinkedList;
+import java.util.Collections;
+import java.util.Map;
+import java.util.HashMap;
+
+enum Grade {
+    GradeFail, GradePass, GradeDistinction;
+}
+
+class Student implements Comparable<Student> {
+    private int marks;
+    public int getMarks() { return this.marks; }
+    public void setMarks(int marks) { this.marks = marks; }
+
+    // implemented method
+    /**
+    * a method which compares the marks of two students.
+    *
+    * @param another student, which we want to compare marks with.
+    * @return -1, 0, 1 based on whether a student's marks are less than,
+    *         equal to or greater than the other specified student.
+    */
+    public int compareTo(Student other) {
+        if(this.getMarks() < other.getMarks()) {
+            return -1;
+        } else if(this.getMarks() == other.getMarks()) {
+            return 0;
+        }
+        return 1;
+    }
+}
+
+class Classroom {
+    private List<Student> classroom = new ArrayList<>();
+
+    // getter
+    public List<Student> getClassroom() {
+        return this.classroom;
+    }
+
+    // setter
+    public void setClassroom(List<Student> classroom) {
+        this.classroom = classroom;
+    }
+
+    Classroom() {
+        setClassroom(getClassroom());
+    }
+
+    // MQ3c.java implementation
+    public static Map<Grade, Integer> gradedStudents = new HashMap<>();
+
+    public void calculateGradeStatistics() {
+        int fail = 0;
+        int pass = 0;
+        int distinction = 0;
+
+        for(Student student: getClassroom()) {
+            if(student.getMarks() < 40) {
+                fail += 1;
+            } else if(student.getMarks() >= 40 && student.getMarks() <= 75) {
+                pass += 1;
+            } else if(student.getMarks() > 75) {
+                distinction += 1;
+            }
+        }
+
+        gradedStudents.put(Grade.GradeFail, fail);
+        gradedStudents.put(Grade.GradePass, pass);
+        gradedStudents.put(Grade.GradeDistinction, distinction);
+    }
+
+    /**
+    * method that adds a student to the private list.
+    *
+    * @param student, a student that will be added to the list.
+    */
+    public void addStudent(Student student) {
+        getClassroom().add(student);
+    }
+
+    /**
+    * a method that will return a list of student that have marks greater than that passed as an arg.
+    *
+    * @param a mark that will be used when deciding which students are added to the list.
+    * @return returns a list of students who's marks are greater than or equal to marks passed as an arg.
+    */
+    public Queue<Student> getGraduatingStudents(int marks) {
+        List<Student> gradedStudents = new ArrayList<>();
+        for(Student student: getClassroom()) {
+            if(student.getMarks() >= marks) {
+                gradedStudents.add(student);
+            }
+        }
+
+        Collections.sort(gradedStudents);
+        Collections.reverse(gradedStudents);
+        Queue<Student> graduatingStudents = new LinkedList<>();
+
+        for(Student student: gradedStudents) {
+            graduatingStudents.add(student);
+        }
+        return graduatingStudents;
+    }
+
+    /**
+    * a method that returns the average marks of all students in the classroom.
+    *
+    * @return the average marks of all students in the classroom.
+    */
+    public int getAverageMarks() {
+        int averageMarks = 0;
+        for(Student student: getClassroom()) {
+            averageMarks += student.getMarks();
+        }
+        return averageMarks / getClassroom().size();
+    }
+
+    public static void main(String[] args) {
+        Student Renso = new Student();
+        Renso.setMarks(85);
+
+        Student Random1 = new Student();
+        Random1.setMarks(39);
+
+        Student Random2 = new Student();
+        Random2.setMarks(39);
+
+        Student Random3 = new Student();
+        Random3.setMarks(74);
+
+        Classroom classroom = new Classroom();
+        classroom.addStudent(Renso);
+        classroom.addStudent(Random1);
+        classroom.addStudent(Random2);
+        classroom.addStudent(Random3);
+
+        //System.out.println(classroom.getAverageMarks());
+
+        //Queue<Student> graduating = classroom.getGraduatingStudents(30);
+        //System.out.println(graduating.remove().getMarks());
+
+        classroom.calculateGradeStatistics();
+        System.out.println(classroom.gradedStudents);
+    }
+}
+

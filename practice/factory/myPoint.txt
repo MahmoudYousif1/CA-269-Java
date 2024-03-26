@@ -1,0 +1,107 @@
+package practice.factory;
+import java.util.*;
+
+
+enum Quadrant{
+    Q1, Q2, Q3, Q4
+}
+
+/**
+ * GridQuadrant
+ */
+ interface GridQuadrant {
+
+    Quadrant getQuadrant();
+}
+
+/**
+ *  
+ */
+interface  CompareQuadrant {
+
+    boolean IsInSamQuadrant(point other);
+    
+}
+
+/**
+ *  
+ */
+interface  PointMaker{
+
+    point makePoint(double x, double y);
+    int countPointsCreated();
+    
+}
+
+
+class point implements GridQuadrant, CompareQuadrant{
+
+    private double x, y;
+
+    public point(double x, double y){
+        this.x = x;
+        this.y = y;
+    }
+
+    public double getX(){
+        return x;
+    }
+
+    public double getY(){
+        return y;
+    }
+
+    public void setX(double x){
+        this.x = x;
+    }
+
+    public void setY(double y){
+        this.y = y;
+    }
+
+
+    @Override
+    public Quadrant getQuadrant(){
+
+        if(x > 0 && y > 0){
+            return Quadrant.Q1;
+        }
+        if(x < 0 && y > 0){
+            return Quadrant.Q2;
+        }
+        if(x < 0 && y < 0){
+            return Quadrant.Q3;
+        }
+        if(x > 0 && y < 0){
+            return Quadrant.Q4;
+        }
+        return null;
+    }
+
+    @Override
+    public boolean IsInSamQuadrant(point other) {
+        return this.getQuadrant() == other.getQuadrant();
+    }
+}
+
+
+public class myPointFactory implements PointMaker{
+    private static int pointsCreated;
+
+    @Override
+    public point makePoint(double x, double y) {
+
+        pointsCreated++;
+        return new point(x, y);
+    }
+
+    @Override
+    public int countPointsCreated() {
+        return pointsCreated;
+    }
+
+    public static void main(String[] args){
+
+        
+    }
+}
